@@ -8,3 +8,15 @@ Author: Ryan Burnette
 Author URI: https://ryanburnette.com
 License: Apache2
 */
+
+function rvif_replace_video_in_feed($embed_code, $video_url, $video_dimensions) {
+  if ( is_feed() ) {
+    return 'foo';
+  }
+
+  return $embed_code;
+}
+add_filter('embed_oembed_html', 'rvif_replace_video_in_feed', 0, 3);
+
+function rvif_youtube($content) {
+}
