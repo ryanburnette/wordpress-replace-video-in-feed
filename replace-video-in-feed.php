@@ -11,12 +11,60 @@ License: Apache2
 
 function rvif_replace_video_in_feed($embed_code, $video_url, $video_dimensions) {
   if ( is_feed() ) {
-    return 'foo';
+    if ( rvif_is_youtube($video_url) ) {
+      $embed_code = rvif_youtube($embed_code, $video_url);
+    }
+    if ( rvif_is_vimeo($video_url) ) {
+      $embed_code = rvif_vimeo($embed_code, $video_url);
+    }
   }
 
   return $embed_code;
 }
 add_filter('embed_oembed_html', 'rvif_replace_video_in_feed', 0, 3);
 
-function rvif_youtube($content) {
+function rvif_is_youtube($video_url) {
+  if (strpos($video_url, 'youtube') !== false) {
+    return true;
+  }
+  return false;
+}
+
+function rvif_get_json($api_url) {
+  $curl = curl_init($api_url);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+  $return = curl_exec($curl);
+  curl_close($curl);
+  return json_decode($return, true);
+}
+
+function rvif_youtube_video_info($video_url) {
+  $api_url = "https://www.youtube.com/oembed?url=". $video_url ."&format=json";
+  $json = rvif_get_json($api_url);
+  return $json;
+}
+
+function rvif_youtube($embed_code, $video_url) {
+  $video_info = rvif_youtube_video_info($video_url);
+  $video_title = $video_info['title'];
+  return '<a href="'.$video_url.'">Watch '.$video_title.' on YouTube.</a>';
+}
+
+function rvif_is_vimeo($video_url) {
+  if (strpos($video_url, 'vimeo') !== false) {
+    return true;
+  }
+  return false;
+}
+
+function rvif_vimeo_video_info($video_url) {
+  $api_url = 'https://vimeo.com/api/oembed.json?url='.$video_url;
+  $json = rvif_get_json($api_url);
+  return $json;
+}
+
+function rvif_vimeo($embed_code, $video_url) {
+  $video_info = rvif_vimeo_video_info($video_url);
+  $video_title = $video_info['title'];
+  return '<a href="'.$video_url.'">Watch '.$video_title.' on Vimeo.</a>';
 }
