@@ -1,21 +1,30 @@
 # *WordPress* Replace Video in Feed
 
-## In Development
+## Summary
 
-This is a work in progress.
+I'm using RSS feeds to generate content for email campaigns and the
+WordPress-generated RSS feeds contain `iframe` embed code for YouTube and Vimeo
+videos embedded in the content. The `iframe` embed code is useless in the
+emails generated from the feed, so I want to override the code that generates
+the embed code in the feed.
 
-## Rationale
+This plugin does just that. Where an `iframe` embed would be generated in
+normal content, the feed will contain a link formatted something like this:
 
-I'm using RSS feeds to generate content for email campaigns and the WordPress-generated
-RSS feeds contain `iframe` embed code for videos embedded in content. This isn't how
-I want to add videos to emails. The goal of this plugin is to replace the `iframe`
-embed with the video thumbnail and a link to play the video to keep the emails
-generated from the feed working properly.
+```html
+<p><a href="https://vimeo.com/212323382">Watch Lil Dicky &#8211; Pillow Talking feat. Brain (Official Music Video) on Vimeo.</a></p>
+```
 
 ## Required PHP Extensions
 
 The plugin requires the PHP curl extension. The plugin doesn't check for its
 presence, so if it is activated without it there will be errors.
+
+## Releases
+
+### 0.1.0
+
+* Initial release
 
 ## License
 
