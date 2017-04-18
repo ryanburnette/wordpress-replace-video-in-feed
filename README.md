@@ -1,4 +1,4 @@
-# **WordPress** Replace Video in Feed
+# *WordPress* Replace Video in Feed
 
 ## In Development
 
