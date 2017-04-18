@@ -1,4 +1,4 @@
-# wordpress-replace-video-in-feed
+# **WordPress** Replace Video in Feed
 
 ## In Development
 
