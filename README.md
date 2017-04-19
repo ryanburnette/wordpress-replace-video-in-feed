@@ -22,6 +22,10 @@ presence, so if it is activated without it there will be errors.
 
 ## Releases
 
+### 0.1.1
+
+* Include video thumbnail in output
+
 ### 0.1.0
 
 * Initial release
