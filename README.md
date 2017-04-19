@@ -1,4 +1,4 @@
-# *WordPress* Replace Video in Feed
+# *WordPress* Replace Video in Feed [![Build Status](https://travis-ci.org/ryanburnette/wordpress-replace-video-in-feed.svg?branch=master)](https://travis-ci.org/ryanburnette/wordpress-replace-video-in-feed)
 
 ## Summary
 
