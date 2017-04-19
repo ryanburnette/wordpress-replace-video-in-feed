@@ -47,7 +47,23 @@ function rvif_youtube_video_info($video_url) {
 function rvif_youtube($embed_code, $video_url) {
   $video_info = rvif_youtube_video_info($video_url);
   $video_title = $video_info['title'];
-  return '<a href="'.$video_url.'">Watch '.$video_title.' on YouTube.</a>';
+  $video_thumb = $video_info['thumbnail_url'];
+
+  $output  = '<p>';
+  $output .= '<a href="';
+  $output .= $video_url;
+  $output .= '">';
+  $output .= '<img src="';
+  $output .= $video_thumb;
+  $output .= '" alt="';
+  $output .= $video_title;
+  $output .= '">';
+  $output .= '<br/>';
+  $output .= '<span>Watch '.$video_title.' on YouTube.</span>';
+  $output .= '</a>';
+  $output .= '</p>';
+
+  return $output;
 }
 
 function rvif_is_vimeo($video_url) {
@@ -66,5 +82,21 @@ function rvif_vimeo_video_info($video_url) {
 function rvif_vimeo($embed_code, $video_url) {
   $video_info = rvif_vimeo_video_info($video_url);
   $video_title = $video_info['title'];
-  return '<a href="'.$video_url.'">Watch '.$video_title.' on Vimeo.</a>';
+  $video_thumb = $video_info['thumbnail_url'];
+
+  $output  = '<p>';
+  $output .= '<a href="';
+  $output .= $video_url;
+  $output .= '">';
+  $output .= '<img src="';
+  $output .= $video_thumb;
+  $output .= '" alt="';
+  $output .= $video_title;
+  $output .= '">';
+  $output .= '<br/>';
+  $output .= '<span>Watch '.$video_title.' on Vimeo.</span>';
+  $output .= '</a>';
+  $output .= '</p>';
+
+  return $output;
 }
