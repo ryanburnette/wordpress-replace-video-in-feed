@@ -20,6 +20,12 @@ normal content, the feed will contain a link formatted something like this:
 The plugin requires the PHP curl extension. The plugin doesn't check for its
 presence, so if it is activated without it there will be errors.
 
+## Incompatible with JetPack
+
+This plugin is currently incompatible with JetPack. It uses the `embed_oembed_html`
+filter which JetPack overrides and doesn't reimplement. I don't know of a workaround
+at the moment.
+
 ## Releases
 
 ### 0.1.2
